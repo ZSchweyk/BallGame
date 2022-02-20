@@ -57,3 +57,15 @@ class MainGame(Widget):
     def _keyboard_closed(self):
         self._keyboard.unbind(on_key_down=self._on_key_down)
         self._keyboard = None
+
+    def on_touch_move(self, touch):
+        if touch.x + self.player_ship.width / 2 > self.width or touch.x - self.player_ship.width / 2 < self.x:
+            return
+        self.player_ship.center_x = touch.x
+
+        # if touch.x > self.center_x:
+        #     self.player_ship.center_x = touch.x + self.player_ship.width / 2
+        # elif touch.x < self.center_x:
+        #     self.player_ship.center_x = touch.x - self.player_ship.width / 2
+        # else:
+        #     self.player_ship.center_x = self.center_x
