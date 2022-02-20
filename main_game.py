@@ -40,7 +40,7 @@ class MainGame(Widget):
         else:
             pass
 
-    def add_ball(self, velocity=(1, -5), acceleration=(0, -.5)):
+    def add_ball(self, velocity=(1, -5), acceleration=(0, -.25)):
         ball = Ball()
         ball.center_x = self.width * .2
         ball.center_y = self.height * .8
