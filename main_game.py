@@ -6,12 +6,12 @@ from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from datetime import datetime
 
-
 from ship import Ship
 from ball import Ball
 
-NUM_SECONDS_BETWEEN_BALL_ENTRIES = 5
-MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
+NUM_SECONDS_BETWEEN_BALL_ENTRIES = 1
+MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 10
+
 
 class MainGame(Widget):
     player_ship = ObjectProperty(None)
@@ -33,7 +33,8 @@ class MainGame(Widget):
                 self._remove_entity(e)
 
         if datetime.now().timestamp() - self.time.timestamp() >= NUM_SECONDS_BETWEEN_BALL_ENTRIES:
-            if sum([1 if isinstance(entity, Ball) else 0 for entity in self._entities]) < MAX_NUM_BALLS_ALLOWED_ON_SCREEN:
+            if sum([1 if isinstance(entity, Ball) else 0 for entity in
+                    self._entities]) < MAX_NUM_BALLS_ALLOWED_ON_SCREEN:
                 ball = self.add_ball()
                 self._add_entity(ball)
                 self.time = datetime.now()
@@ -95,4 +96,3 @@ class MainGame(Widget):
     #     print(etype)
     #     print(me)
     #     print(x)
-
