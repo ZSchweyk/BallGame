@@ -19,7 +19,6 @@ class MainGame(Widget):
     def __init__(self):
         super(MainGame, self).__init__()
         self._entities = []
-        # Window.bind(on_motion=self.on_motion)
 
         self._add_entity(self.player_ship, skip_widget=True)
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -44,8 +43,13 @@ class MainGame(Widget):
 
     def add_ball(self, velocity=(1, -4), acceleration=(0, -.25)):
         ball = Ball()
-        random.random()
-        ball.center_x = self.width * .1
+        size = random.uniform(30, 70)
+        ball.size = size, size
+        if random.random() <= .5:
+            ball.center_x = self.width * random.uniform(.05, .15)
+        else:
+            ball.center_x = self.width * random.uniform(.9, .95)
+
         ball.center_y = self.height * .9
         ball.velocity = velocity
         ball.acceleration = acceleration
@@ -91,8 +95,3 @@ class MainGame(Widget):
             return
         self.player_ship.center_x = touch.x
 
-    # @staticmethod
-    # def on_motion(etype, me, x):
-    #     print(etype)
-    #     print(me)
-    #     print(x)

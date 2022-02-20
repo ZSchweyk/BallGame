@@ -20,8 +20,6 @@ class Ball(Widget):
         self.velocity[1] += self.acceleration[1]
         self.pos = Vector(*self.velocity) + self.pos
 
-        print(self.parent.y)
-
         if self.y - self.height < 0:
             self.velocity[1] *= -1
 
