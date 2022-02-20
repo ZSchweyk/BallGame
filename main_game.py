@@ -63,9 +63,3 @@ class MainGame(Widget):
             return
         self.player_ship.center_x = touch.x
 
-        # if touch.x > self.center_x:
-        #     self.player_ship.center_x = touch.x + self.player_ship.width / 2
-        # elif touch.x < self.center_x:
-        #     self.player_ship.center_x = touch.x - self.player_ship.width / 2
-        # else:
-        #     self.player_ship.center_x = self.center_x
