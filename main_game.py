@@ -1,3 +1,4 @@
+import random
 import sys
 
 from kivy.properties import ObjectProperty
@@ -9,7 +10,7 @@ from datetime import datetime
 from ship import Ship
 from ball import Ball
 
-NUM_SECONDS_BETWEEN_BALL_ENTRIES = 1
+NUM_SECONDS_BETWEEN_BALL_ENTRIES = 5
 MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
 
 class MainGame(Widget):
@@ -40,10 +41,11 @@ class MainGame(Widget):
         else:
             pass
 
-    def add_ball(self, velocity=(1, -5), acceleration=(0, -.25)):
+    def add_ball(self, velocity=(1, -4), acceleration=(0, -.25)):
         ball = Ball()
-        ball.center_x = self.width * .2
-        ball.center_y = self.height * .8
+        random.random()
+        ball.center_x = self.width * .1
+        ball.center_y = self.height * .9
         ball.velocity = velocity
         ball.acceleration = acceleration
         return ball
