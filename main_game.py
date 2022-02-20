@@ -10,7 +10,7 @@ from ship import Ship
 from ball import Ball
 
 NUM_SECONDS_BETWEEN_BALL_ENTRIES = 1
-MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 100
+MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
 
 class MainGame(Widget):
     player_ship = ObjectProperty(None)
