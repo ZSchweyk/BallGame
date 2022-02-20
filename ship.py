@@ -28,7 +28,7 @@ class Ship(Widget):
         bullet = Bullet()
 
         bullet.center_x = self.center_x
-        bullet.center_y = self.y + self.height + 5
+        bullet.center_y = self.y + self.height + 2
         bullet.velocity = velocity
 
         return bullet
