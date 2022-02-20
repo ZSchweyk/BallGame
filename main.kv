@@ -1,0 +1,25 @@
+<MainGame>:
+    player_ship: player_ship
+
+    Ship:
+        id: player_ship
+        center_x: root.center_x
+        center_y: 0 + self.height
+
+
+<Ship>:
+    size: 50, 50
+
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+            source: self.image
+
+<Bullet>:
+    size: 5, 5
+
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
