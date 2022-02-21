@@ -2,7 +2,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
-# from ship import Ship
+from bullet import Bullet
 
 
 class Ball(Widget):
@@ -13,16 +13,19 @@ class Ball(Widget):
     velocity = ReferenceListProperty(velocity_x, velocity_y)
     acceleration = ReferenceListProperty(acceleration_x, acceleration_y)
 
-    def __init__(self, **kwargs):
+    def __init__(self, strength=50, **kwargs):
         super(Ball, self).__init__(**kwargs)
         self.collision_detected = False
+        self.strength = strength
 
     def update(self, dt):
-        # for e in self.parent._entities:
-        #     if e is not self:
-        #         if isinstance(e, Ship) and e.collide_widget(self):
-        #             e.collision_detected = True
-        #             return False
+        for e in self.parent._entities:
+            if isinstance(e, Bullet) and e.collide_widget(self):
+                print("Bullet collided with ball")
+                self.strength -= 1
+                if self.strength == 0:
+                    e.collision_detected = True
+                    return False
 
         self.velocity[0] += self.acceleration[0]
         self.velocity[1] += self.acceleration[1]
