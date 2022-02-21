@@ -2,7 +2,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
-from ship import Ship
+# from ship import Ship
 
 
 class Ball(Widget):
@@ -18,11 +18,11 @@ class Ball(Widget):
         self.collision_detected = False
 
     def update(self, dt):
-        for e in self.parent._entities:
-            if e is not self:
-                if isinstance(e, Ship) and e.collide_widget(self):
-                    e.collision_detected = True
-                    return False
+        # for e in self.parent._entities:
+        #     if e is not self:
+        #         if isinstance(e, Ship) and e.collide_widget(self):
+        #             e.collision_detected = True
+        #             return False
 
         self.velocity[0] += self.acceleration[0]
         self.velocity[1] += self.acceleration[1]

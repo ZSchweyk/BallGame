@@ -4,6 +4,7 @@ import sys
 from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
+from kivymd.uix.dialog import MDDialog
 from datetime import datetime
 
 from ship import Ship
@@ -29,6 +30,10 @@ class MainGame(Widget):
         for e in self._entities[:]:
             status = e.update(dt)
             if not status or e.collision_detected:
+                if isinstance(e, Ship):
+                    # popup = MDDialog(text="Game Over")
+                    # popup.open()
+                    sys.exit(0)
                 self._remove_entity(e)
 
         if datetime.now().timestamp() - self.time.timestamp() >= NUM_SECONDS_BETWEEN_BALL_ENTRIES:
@@ -37,7 +42,6 @@ class MainGame(Widget):
                 ball = self.add_ball()
                 self._add_entity(ball)
                 self.time = datetime.now()
-                print("Finished adding")
         else:
             pass
 

@@ -2,6 +2,7 @@ from kivy.properties import StringProperty, NumericProperty
 from kivy.uix.widget import Widget
 
 from bullet import Bullet
+from ball import Ball
 
 
 class Ship(Widget):
@@ -15,10 +16,11 @@ class Ship(Widget):
 
     def update(self, dt):
         # Check for collisions
-        # for e in self.parent._entities:
-        #     if e is not self and e.collide_widget(self):
-        #         e.collision_detected = True
-        #         return False
+        for e in self.parent._entities:
+            if e is not self:
+                if isinstance(e, Ball) and e.collide_widget(self):
+                    e.collision_detected = True
+                    return False
 
         if self.move_direction != 0:
             self.center_x += self.move_direction * 5
