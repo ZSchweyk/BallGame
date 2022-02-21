@@ -2,6 +2,8 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
+from ship import Ship
+
 
 class Ball(Widget):
     velocity_x = NumericProperty(0)
@@ -16,11 +18,17 @@ class Ball(Widget):
         self.collision_detected = False
 
     def update(self, dt):
+        for e in self.parent._entities:
+            if e is not self:
+                if isinstance(e, Ship) and e.collide_widget(self):
+                    e.collision_detected = True
+                    return False
+
         self.velocity[0] += self.acceleration[0]
         self.velocity[1] += self.acceleration[1]
         self.pos = Vector(*self.velocity) + self.pos
 
-        if self.center_y - self.height/2 < self.parent.y + 5:
+        if self.center_y - self.height / 2 < self.parent.y + 5:
             self.velocity[1] *= -1
 
         if self.center_x - self.width / 2 <= self.parent.x or self.center_x + self.width / 2 >= self.parent.width:
