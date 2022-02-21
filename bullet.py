@@ -2,7 +2,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
-from ball import Ball
+# from ball import Ball
 
 
 class Bullet(Widget):
@@ -19,15 +19,14 @@ class Bullet(Widget):
         self.pos = Vector(*self.velocity) + self.pos
 
         # Check for collisions
-        for e in self.parent._entities:
-            if e is not self and e.collide_widget(self):
-                self.collision_detected = True
-                if isinstance(e, Ball):
-                    e.strength -= 1
-                    print(e.strength)
-                    if e.strength == 0:
-                        e.collision_detected = True
-                        return False
+        # for e in self.parent._entities:
+        #     if e is not self and e.collide_widget(self):
+        #         self.collision_detected = True
+        #         if isinstance(e, Ball):
+        #             e.strength -= 1
+        #             if e.strength == 0:
+        #                 e.collision_detected = True
+        #                 return False
 
         # Check if we've gone off-screen
         if self.center_y > self.parent.height:
