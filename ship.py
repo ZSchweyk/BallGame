@@ -5,7 +5,7 @@ from bullet import Bullet
 
 
 class Ship(Widget):
-    image = StringProperty('images/ship.jpg')
+    image = StringProperty('images/SpaceShip.jpg')
     move_direction = NumericProperty(0)
 
     def __init__(self, **kwargs):
@@ -14,6 +14,12 @@ class Ship(Widget):
         self.collision_detected = False
 
     def update(self, dt):
+        # Check for collisions
+        # for e in self.parent._entities:
+        #     if e is not self and e.collide_widget(self):
+        #         e.collision_detected = True
+        #         return False
+
         if self.move_direction != 0:
             self.center_x += self.move_direction * 5
 
@@ -22,6 +28,7 @@ class Ship(Widget):
             elif self.x + self.width >= self.parent.width:
                 self.x = self.parent.width - self.width
 
+        # Still alive.
         return True
 
     def fire(self, velocity=(0, 5)):

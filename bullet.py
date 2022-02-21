@@ -20,7 +20,6 @@ class Bullet(Widget):
         for e in self.parent._entities:
             if e is not self and e.collide_widget(self):
                 e.collision_detected = True
-
                 return False
 
         # Check if we've gone off-screen

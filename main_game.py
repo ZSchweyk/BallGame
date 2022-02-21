@@ -41,7 +41,7 @@ class MainGame(Widget):
         else:
             pass
 
-    def add_ball(self, velocity=(1, -4), acceleration=(0, -.25)):
+    def add_ball(self, velocity=(1, -3), acceleration=(0, -.125)):
         ball = Ball()
         size = random.uniform(30, 70)
         ball.size = size, size
