@@ -34,6 +34,9 @@ class MainGame(Widget):
                     # popup = MDDialog(text="Game Over")
                     # popup.open()
                     sys.exit(0)
+                if isinstance(e, Ball):
+                    self.add_ball(strength=int(e.strength / 2))
+                    self.add_ball(strength=int(e.strength / 2))
                 self._remove_entity(e)
 
         if datetime.now().timestamp() - self.time.timestamp() >= NUM_SECONDS_BETWEEN_BALL_ENTRIES:
@@ -45,8 +48,8 @@ class MainGame(Widget):
         else:
             pass
 
-    def add_ball(self, velocity=(1, -3), acceleration=(0, -.125)):
-        ball = Ball(strength=random.randint(10, 100))
+    def add_ball(self, strength=random.randint(10, 100), velocity=(1, -3), acceleration=(0, -.125)):
+        ball = Ball(strength=strength)
         size = random.uniform(30, 70)
         ball.size = size, size
         if random.random() <= .5:
