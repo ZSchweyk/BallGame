@@ -2,7 +2,7 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
 from kivy.vector import Vector
 
-from bullet import Bullet
+# from bullet import Bullet
 
 
 class Ball(Widget):
@@ -19,16 +19,16 @@ class Ball(Widget):
         self.strength = strength
 
     def update(self, dt):
-        for e in self.parent._entities:
-            if e is not self:
-                print(e.collide_widget(self))
-
-                if isinstance(e, Bullet) and e.collide_widget(self):
-                    print("Bullet collided with ball")
-                    self.strength -= 1
-                    if self.strength == 0:
-                        e.collision_detected = True
-                        return False
+        # for e in self.parent._entities:
+        #     if e is not self:
+        #         print(e.collide_widget(self))
+        #
+        #         if isinstance(e, Bullet) and e.collide_widget(self):
+        #             print("Bullet collided with ball")
+        #             self.strength -= 1
+        #             if self.strength == 0:
+        #                 e.collision_detected = True
+        #                 return False
 
         self.velocity[0] += self.acceleration[0]
         self.velocity[1] += self.acceleration[1]

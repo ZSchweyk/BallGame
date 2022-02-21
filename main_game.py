@@ -10,8 +10,8 @@ from datetime import datetime
 from ship import Ship
 from ball import Ball
 
-NUM_SECONDS_BETWEEN_BALL_ENTRIES = 1
-MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 10
+NUM_SECONDS_BETWEEN_BALL_ENTRIES = 3
+MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
 
 
 class MainGame(Widget):
@@ -46,7 +46,7 @@ class MainGame(Widget):
             pass
 
     def add_ball(self, velocity=(1, -3), acceleration=(0, -.125)):
-        ball = Ball(strength=random.uniform(10, 100))
+        ball = Ball(strength=random.randint(10, 100))
         size = random.uniform(30, 70)
         ball.size = size, size
         if random.random() <= .5:
