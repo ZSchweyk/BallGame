@@ -80,7 +80,7 @@ class MainGame(Widget):
             sys.exit(0)
 
         elif keycode[1] == 'spacebar':
-            bullet = self.player_ship.fire()
+            bullet = self.player_ship.fire(strength=100)
             self._add_entity(bullet)
 
         elif keycode[1] in ('left', 'right'):

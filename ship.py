@@ -33,8 +33,8 @@ class Ship(Widget):
         # Still alive.
         return True
 
-    def fire(self, velocity=(0, 5)):
-        bullet = Bullet(strength=100)
+    def fire(self, strength=1, velocity=(0, 5)):
+        bullet = Bullet(strength=strength)
 
         bullet.center_x = self.center_x
         bullet.center_y = self.y + self.height + 2
