@@ -7,14 +7,10 @@ from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivymd.uix.dialog import MDDialog
 from datetime import datetime
+from settings import *
 
 from ship import Ship
 from ball import Ball
-
-NUM_BULLETS_PER_ROW = 3
-BULLET_STRENGTH = 1
-NUM_SECONDS_BETWEEN_BALL_ENTRIES = 3
-MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
 
 
 class MainGame(Widget):
@@ -38,8 +34,8 @@ class MainGame(Widget):
                     # popup.open()
                     sys.exit(0)
                 if isinstance(e, Ball):
-                    self.add_ball(strength=int(e.strength / 2))
-                    self.add_ball(strength=int(e.strength / 2))
+                    self._add_entity(self.add_ball(strength=int(e.strength / 2)))
+                    self._add_entity(self.add_ball(strength=int(e.strength / 2)))
                 self._remove_entity(e)
 
         if datetime.now().timestamp() - self.time.timestamp() >= NUM_SECONDS_BETWEEN_BALL_ENTRIES:

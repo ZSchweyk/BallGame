@@ -4,6 +4,7 @@ from kivy.app import Builder
 
 from main_game import MainGame
 
+
 class BallGame(App):
     def build(self):
         game = MainGame()
