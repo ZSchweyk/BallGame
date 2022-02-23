@@ -6,30 +6,30 @@
         center_x: root.center_x
         center_y: self.height/2
 
-
-<BallLabel>
+<Ball@Label>
     canvas:
+        Color:
+            rgb: 1, 0, 0
+#        Label:
+#            text: "40"
         Ellipse:
             pos: self.pos
             size: self.size
-            color: .5, .5, .5, .5
-            text: "40"
-
 
 
 <Ship>:
     size: 50, 50
-
     canvas:
         Ellipse:
             pos: self.pos
             size: self.size
             source: self.image
 
-<Bullet>:
+<Bullet@Label>:
     size: 5, 5
-
     canvas:
+        Color:
+            rgb: 1, 1, 1
         Ellipse:
             pos: self.pos
             size: self.size
