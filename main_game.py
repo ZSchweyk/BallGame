@@ -1,12 +1,15 @@
 import random
 import sys
 
+from kivy.clock import Clock
 from kivy.graphics import Color
 from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivymd.uix.dialog import MDDialog
 from datetime import datetime
+from threading import Thread
+
 from settings import *
 
 from ship import Ship
@@ -23,7 +26,13 @@ class MainGame(Widget):
         self._add_entity(self.player_ship, skip_widget=True)
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
         self._keyboard.bind(on_key_down=self._on_key_down, on_key_up=self._on_key_up)
+        Clock.schedule_interval(self.shoot, 1 / 60)
         self.time = datetime.now()
+
+    def shoot(self, dt):
+        bullets = self.player_ship.fire(num_in_row=NUM_BULLETS_PER_ROW, strength=BULLET_STRENGTH)
+        for bullet in bullets:
+            self._add_entity(bullet)
 
     def update(self, dt):
         for e in self._entities[:]:
@@ -34,8 +43,11 @@ class MainGame(Widget):
                     # popup.open()
                     sys.exit(0)
                 if isinstance(e, Ball):
-                    self._add_entity(self.add_ball(strength=int(e.strength / 2)))
-                    self._add_entity(self.add_ball(strength=int(e.strength / 2)))
+                    # After figuring out a way to store initial ball height and add a ball with a certain position,
+                    # uncomment these lines.
+                    # self._add_entity(self.add_ball(strength=int(e.strength / 2)))
+                    # self._add_entity(self.add_ball(strength=int(e.strength / 2)))
+                    pass
                 self._remove_entity(e)
 
         if datetime.now().timestamp() - self.time.timestamp() >= NUM_SECONDS_BETWEEN_BALL_ENTRIES:
@@ -73,14 +85,15 @@ class MainGame(Widget):
 
     def _on_key_down(self, keyboard, keycode, text, modifiers):
         # Logger.debug(keycode)
+        print(keycode[1])
 
         if keycode[1] == 'escape':
             sys.exit(0)
 
-        elif keycode[1] == 'spacebar':
-            bullets = self.player_ship.fire(num_in_row=NUM_BULLETS_PER_ROW, strength=BULLET_STRENGTH)
-            for bullet in bullets:
-                self._add_entity(bullet)
+        # elif keycode[1] == 'spacebar':
+        #     bullets = self.player_ship.fire(num_in_row=NUM_BULLETS_PER_ROW, strength=BULLET_STRENGTH)
+        #     for bullet in bullets:
+        #         self._add_entity(bullet)
 
         elif keycode[1] in ('left', 'right'):
             if keycode[1] == 'left':
