@@ -8,9 +8,9 @@ class Bullet(Widget):
     velocity_y = NumericProperty(0)
     velocity = ReferenceListProperty(velocity_x, velocity_y)
 
-    def __init__(self, **kwargs):
+    def __init__(self, strength=1, **kwargs):
         super(Bullet, self).__init__(**kwargs)
-
+        self.strength = strength
         self.collision_detected = False
 
     def update(self, dt):

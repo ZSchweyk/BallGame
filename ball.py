@@ -23,7 +23,7 @@ class Ball(Widget):
             if e is not self and e.collide_widget(self):
                 if isinstance(e, Bullet):
                     e.collision_detected = True
-                    self.strength -= 1
+                    self.strength -= e.strength
                     if self.strength <= 0:
                         self.collision_detected = True
                         # The return statement below is not technically needed; it just prevents the computation below.

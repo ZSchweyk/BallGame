@@ -34,7 +34,7 @@ class Ship(Widget):
         return True
 
     def fire(self, velocity=(0, 5)):
-        bullet = Bullet()
+        bullet = Bullet(strength=100)
 
         bullet.center_x = self.center_x
         bullet.center_y = self.y + self.height + 2
