@@ -1,6 +1,7 @@
 import random
 import sys
 
+from kivy.graphics import Color
 from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
@@ -52,6 +53,7 @@ class MainGame(Widget):
         ball = Ball(strength=strength)
         size = random.uniform(30, 70)
         ball.size = size, size
+        # specify the color of the ball. Not completely sure how to do this yet...
         if random.random() <= .5:
             ball.center_x = self.width * random.uniform(.05, .15)
         else:
