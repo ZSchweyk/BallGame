@@ -11,6 +11,7 @@ from datetime import datetime
 from ship import Ship
 from ball import Ball
 
+BULLET_STRENGTH = 1
 NUM_SECONDS_BETWEEN_BALL_ENTRIES = 3
 MAX_NUM_BALLS_ALLOWED_ON_SCREEN = 5
 
@@ -80,8 +81,9 @@ class MainGame(Widget):
             sys.exit(0)
 
         elif keycode[1] == 'spacebar':
-            bullet = self.player_ship.fire(strength=100)
-            self._add_entity(bullet)
+            bullets = self.player_ship.fire(num_in_row=3, strength=BULLET_STRENGTH)
+            for bullet in bullets:
+                self._add_entity(bullet)
 
         elif keycode[1] in ('left', 'right'):
             if keycode[1] == 'left':

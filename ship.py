@@ -33,11 +33,43 @@ class Ship(Widget):
         # Still alive.
         return True
 
-    def fire(self, strength=1, velocity=(0, 5)):
-        bullet = Bullet(strength=strength)
+    def fire(self, num_in_row=1, strength=1, velocity=(0, 5)):
+        bullets = []
+        if num_in_row == 1:
+            bullet = Bullet(strength=strength)
+            bullet.center_x = self.center_x
+            bullet.center_y = self.y + self.height + 2
+            bullet.velocity = velocity
+            bullets.append(bullet)
+        elif num_in_row == 2:
+            bullet1 = Bullet(strength=strength)
+            bullet1.center_x = self.center_x - 4
+            bullet1.center_y = self.y + self.height + 2
+            bullet1.velocity = velocity
+            bullets.append(bullet1)
 
-        bullet.center_x = self.center_x
-        bullet.center_y = self.y + self.height + 2
-        bullet.velocity = velocity
+            bullet2 = Bullet(strength=strength)
+            bullet2.center_x = self.center_x + 4
+            bullet2.center_y = self.y + self.height + 2
+            bullet2.velocity = velocity
+            bullets.append(bullet2)
+        elif num_in_row == 3:
+            bullet1 = Bullet(strength=strength)
+            bullet1.center_x = self.center_x - 8
+            bullet1.center_y = self.y + self.height + 2
+            bullet1.velocity = velocity
+            bullets.append(bullet1)
 
-        return bullet
+            bullet2 = Bullet(strength=strength)
+            bullet2.center_x = self.center_x
+            bullet2.center_y = self.y + self.height + 2
+            bullet2.velocity = velocity
+            bullets.append(bullet2)
+
+            bullet3 = Bullet(strength=strength)
+            bullet3.center_x = self.center_x + 8
+            bullet3.center_y = self.y + self.height + 2
+            bullet3.velocity = velocity
+            bullets.append(bullet3)
+
+        return bullets
