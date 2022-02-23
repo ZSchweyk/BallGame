@@ -21,6 +21,8 @@ class Ball(Widget):
     def update(self, dt):
         for e in self.parent._entities:
             if e is not self and e.collide_widget(self):
+                # If a ball collides with a bullet, reduce the strength of the ball.
+                # If the ball doesn't have any more strength to give up, remove the ball.
                 if isinstance(e, Bullet):
                     e.collision_detected = True
                     self.strength -= e.strength
