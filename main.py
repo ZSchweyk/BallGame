@@ -9,7 +9,7 @@ class BallGame(App):
     def build(self):
         game = MainGame()
 
-        Clock.schedule_interval(game.update, 1 / 1000)
+        Clock.schedule_interval(game.update, 1 / 60)
 
         return game
 

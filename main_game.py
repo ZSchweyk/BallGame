@@ -59,7 +59,7 @@ class MainGame(Widget):
         else:
             pass
 
-    def add_ball(self, strength=random.randint(10, 100), velocity=(1, -3), acceleration=(0, -.125)):
+    def add_ball(self, strength=random.randint(10, 100), velocity=(1, -1), acceleration=(0, -.125)):
         ball = Ball(strength=strength)
         size = random.uniform(30, 70)
         ball.size = size, size
