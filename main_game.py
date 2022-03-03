@@ -6,7 +6,6 @@ from kivy.graphics import Color
 from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
-from kivymd.uix.dialog import MDDialog
 from datetime import datetime
 from threading import Thread
 
